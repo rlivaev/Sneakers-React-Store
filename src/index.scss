@@ -12,4 +12,8 @@ body {
   max-width: 1080px; //макс-я ширина
   margin: 50px auto;// отс сверху и централизация
 }
-
+header{
+  h3,p{
+    margin: 0;
+  }
+}

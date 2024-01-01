@@ -1,12 +1,12 @@
 function App() {
-  return (
-		<div className='wrapper'>
-			<header>
-				<div className='headerLeft'>
+	return (
+		<div className='wrapper clear'>
+			<header className='d-flex justify-between'>
+				<div className='d-flex align-center'>
 					<img width={40} height={40} src='/img/logo.png' alt='logo' />
 					<div className='headerInfo'>
 						<h3>React Snickers</h3>
-						<span>Магазин лучших кроссовок</span>
+						<p>Магазин лучших кроссовок</p>
 					</div>
 				</div>
 				<ul className='headerRight'>
@@ -27,5 +27,4 @@ function App() {
 		</div>
 	);
 }
-
 export default App;
