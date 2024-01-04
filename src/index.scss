@@ -105,6 +105,32 @@ header{
     margin: 0;
   }
  }
+
+ .cartTotalBlock{
+  ul{
+    li{
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 20px;
+  
+      div{
+        flex: 1;
+        height: 1px;
+        border-bottom: 1px dashed #dfdfdf;
+        position: relative;
+        top: -4px;
+        margin: 0 7px;
+      }
+    }
+  }
+  button{
+    width: 100%;
+    height: 55px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: 0;
+  }
+ }
 .cartItem{
   border: 1px solid #f3f3f3;
   border-radius: 20px;
