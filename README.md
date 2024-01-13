@@ -1,40 +1,39 @@
 # React Sneakers
 
-Этот проект представляет собой интернет-магазин кроссовок, разработанный с использованием React. Он создан в рамках учебного курса.
+This project is an e-commerce shoe store built using React. It is created as part of the educational course
 
-## Установка
+## Installation
 
-1. Склонируйте репозиторий:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/rlivaev/Sneakers-React-Store.git
 ```
-1. Перейдите в каталог проекта:
+1. Navigate to the project directory:
 
 * cd pizza
   
-2. Установите зависимости:
+2. Install dependencies:
 * npm install
   
-3. Запустите приложение:
+3. Start the application:
 * npm start
 
-#### Приложение будет доступно по адресу http://localhost:3000/
+#### The application will be available at http://localhost:3000/
 
-## Описание проекта
+## Project Description
 
-Этот интернет-магазин кроссовок построен на основе React и включает в себя следующие функциональности:
+This shoe store is built with React and includes the following features:
+* Browse a list of sneakers
+* Filter sneakers by categories
+* Add sneakers to the shopping cart
+* View the cart and proceed to checkout
 
-* Просмотр списка кроссовок
-* Фильтрация кроссовок по категориям
-* Добавление кроссовок в корзину
-* Просмотр корзины и оформление заказа
-
-Технологии
+Technologies
 * React
 * React Router
-* SCSS для стилей
-* Интеграция с внешними данными (например, JSON-файл с информацией о кроссовках)
+* SCSS for styles
+* Integration with external data (e.g., JSON file with sneaker information)
 
 ## Screenshot of main page
 ![Image alt](https://github.com/rlivaev/Sneakers-React-Store/blob/main/Screen.png)
