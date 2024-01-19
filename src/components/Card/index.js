@@ -1,12 +1,13 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import styles from './Card.module.scss';
 
 export const Card = (props) => {
 	const [isAdded, setIsAdded] = useState(false);
 
 	const onClickPlus = () => {
-		setIsAdded(true);
+		setIsAdded(!isAdded);
 	};
+
 	return (
 		<div className={styles.card}>
 			<div className={styles.favorite} onClick={props.onFavorite}>

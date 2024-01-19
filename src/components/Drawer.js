@@ -1,7 +1,7 @@
 import React from 'react';
 export const Drawer = () => {
 	return (
-		<div style={{ display: 'none' }} className='overlay'>
+		<div className='overlay'>
 			<div className='drawer'>
 				<h2 className='d-flex justify-between mb-30'>
 					Корзина

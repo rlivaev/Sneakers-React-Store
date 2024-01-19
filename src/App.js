@@ -1,6 +1,7 @@
 import { Card } from './components/Card';
 import { Header } from './components/Header';
 import { Drawer } from './components/Drawer.js';
+import { useState } from 'react';
 const arr = [
 	{
 		title: 'Мужские Кроссовки Nike Blazer Mid Suede',
@@ -24,10 +25,11 @@ const arr = [
 	},
 ];
 function App() {
+	const [cartOpened, setCartOpened] = useState(false);
 	return (
 		<div className='wrapper clear'>
-			<Drawer />
-			<Header />
+			{cartOpened ? <Drawer /> : null}
+			<Header onClickCart={() => setCartOpened(true)} />
 			<div className='content p-40'>
 				<div className='d-flex mb-40 align-center justify-between'>
 					<h1>Все кроссовки</h1>
