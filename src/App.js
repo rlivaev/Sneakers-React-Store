@@ -28,7 +28,7 @@ function App() {
 	const [cartOpened, setCartOpened] = useState(false);
 	return (
 		<div className='wrapper clear'>
-			{cartOpened ? <Drawer /> : null}
+			{cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
 			<Header onClickCart={() => setCartOpened(true)} />
 			<div className='content p-40'>
 				<div className='d-flex mb-40 align-center justify-between'>
