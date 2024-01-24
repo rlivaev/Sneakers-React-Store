@@ -3,8 +3,9 @@ import { Header } from './components/Header';
 import { Drawer } from './components/Drawer.js';
 import { useState, useEffect } from 'react';
 function App() {
-	const [items, setItems] = useState([]);
-	const [cartOpened, setCartOpened] = useState(false);
+	const [items, setItems] = useState([]); // товары
+	const [cartItems, setCardItems] = useState([]); //карзина
+	const [cartOpened, setCartOpened] = useState(false); //открытие карзины
 
 	useEffect(() => {
 		fetch('https://65af822e2f26c3f2139af727.mockapi.io/items')
@@ -15,9 +16,12 @@ function App() {
 				setItems(json);
 			});
 	}, []);
+	const onAddToCart = (obj) => {
+		setCardItems((prev) => [...prev, obj]);
+	};
 	return (
 		<div className='wrapper clear'>
-			{cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+			{cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
 			<Header onClickCart={() => setCartOpened(true)} />
 			<div className='content p-40'>
 				<div className='d-flex mb-40 align-center justify-between'>
@@ -28,13 +32,13 @@ function App() {
 					</div>
 				</div>
 				<div className='d-flex flex-wrap'>
-					{items.map((obj) => (
+					{items.map((item) => (
 						<Card
-							title={obj.title}
-							price={obj.price}
-							imagesUrl={obj.imageUrl}
-							onPlus={() => console.log('нажали на плюс')}
+							title={item.title}
+							price={item.price}
+							imagesUrl={item.imageUrl}
 							onFavorite={() => console.log('закладки')}
+							onPlus={(obj) => onAddToCart(obj)}
 						/>
 					))}
 				</div>
