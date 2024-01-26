@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 function App() {
 	const [items, setItems] = useState([]); // товары
 	const [cartItems, setCardItems] = useState([]); //карзина
+	const [searchValue, setSearchValue] = useState(''); //карзина
+
 	const [cartOpened, setCartOpened] = useState(false); //открытие карзины
 
 	useEffect(() => {
@@ -19,21 +21,36 @@ function App() {
 	const onAddToCart = (obj) => {
 		setCardItems((prev) => [...prev, obj]);
 	};
+	const onChangeSearchInput = (event) => {
+		setSearchValue(event.target.value);
+	};
+	const deleteSearchInput = () => {
+		setSearchValue('');
+	};
 	return (
 		<div className='wrapper clear'>
 			{cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
 			<Header onClickCart={() => setCartOpened(true)} />
 			<div className='content p-40'>
 				<div className='d-flex mb-40 align-center justify-between'>
-					<h1>Все кроссовки</h1>
+					<h1>{searchValue ? `Поиск по запросу:'${searchValue}'` : 'Все кроссовки'}</h1>
 					<div className='search-block d-flex'>
 						<img src='/img/search.svg' alt='Search' />
-						<input placeholder='Поиск...' />
+						{searchValue && (
+							<img
+								onClick={deleteSearchInput}
+								className='clear cu-p'
+								src='/img/btn-remove.svg'
+								alt='Remove'
+							/>
+						)}
+						<input onChange={onChangeSearchInput} value={searchValue} placeholder='Поиск...' />
 					</div>
 				</div>
 				<div className='d-flex flex-wrap'>
-					{items.map((item) => (
+					{items.map((item, index) => (
 						<Card
+							key={index}
 							title={item.title}
 							price={item.price}
 							imagesUrl={item.imageUrl}
