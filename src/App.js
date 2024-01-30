@@ -2,6 +2,7 @@ import { Card } from './components/Card';
 import { Header } from './components/Header';
 import { Drawer } from './components/Drawer.js';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 function App() {
 	const [items, setItems] = useState([]); // товары
 	const [cartItems, setCardItems] = useState([]); //карзина
@@ -10,13 +11,9 @@ function App() {
 	const [cartOpened, setCartOpened] = useState(false); //открытие карзины
 
 	useEffect(() => {
-		fetch('https://65af822e2f26c3f2139af727.mockapi.io/items')
-			.then((res) => {
-				return res.json();
-			})
-			.then((json) => {
-				setItems(json);
-			});
+		axios.get('https://65af822e2f26c3f2139af727.mockapi.io/items').then((res) => {
+			setItems(res.data);
+		});
 	}, []);
 	const onAddToCart = (obj) => {
 		setCardItems((prev) => [...prev, obj]);
@@ -48,19 +45,23 @@ function App() {
 					</div>
 				</div>
 				<div className='d-flex flex-wrap'>
-					{items.map((item, index) => (
-						<Card
-							key={index}
-							title={item.title}
-							price={item.price}
-							imagesUrl={item.imageUrl}
-							onFavorite={() => console.log('закладки')}
-							onPlus={(obj) => onAddToCart(obj)}
-						/>
-					))}
+					{items
+						.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+						.map((item, index) => (
+							<Card
+								key={index}
+								title={item.title}
+								price={item.price}
+								imagesUrl={item.imageUrl}
+								onFavorite={() => console.log('закладки')}
+								onPlus={(obj) => onAddToCart(obj)}
+							/>
+						))}
 				</div>
 			</div>
 		</div>
 	);
 }
 export default App;
+
+
