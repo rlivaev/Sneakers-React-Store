@@ -1,5 +1,5 @@
 import React from 'react';
-export const Drawer = ({ onClose, items = [] }) => {
+export const Drawer = ({ onClose, onRemove, items = [] }) => {
 	return (
 		<div className='overlay'>
 			<div className='drawer'>
@@ -7,6 +7,16 @@ export const Drawer = ({ onClose, items = [] }) => {
 					Корзина
 					<img onClick={onClose} className='cu-p' src='/img/btn-remove.svg' alt='Remove' />
 				</h2>
+
+				<div className='cartEmpty d-flex align-center justify-center flex-column flex'>
+					<img className='mb-20' width='120px' height='120' src='/img/empty-cart.jpg' alt='' />
+					<h2>Корзина пустая</h2>
+					<p className='opacity-6'>Добавьте хотя бы одну пару красовок, чтобы сделать заказ</p>
+					<button className='greenButton'>
+						<img src='/img/arrow.svg' alt='Arrow' /> Вернуться назад
+					</button>
+				</div>
+
 				<div className='items'>
 					{items.map((obj) => (
 						<div className='cartItem d-flex align-center mb-20'>
@@ -18,7 +28,12 @@ export const Drawer = ({ onClose, items = [] }) => {
 								<p className='mb-5'>{obj.title}</p>
 								<b>{obj.price} руб.</b>
 							</div>
-							<img className='removeBtn' src='/img/btn-remove.svg' alt='Remove' />
+							<img
+								className='removeBtn'
+								onClick={() => onRemove(obj.id)}
+								src='/img/btn-remove.svg'
+								alt='Remove'
+							/>
 						</div>
 					))}
 				</div>
