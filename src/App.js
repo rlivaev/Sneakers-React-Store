@@ -2,10 +2,13 @@ import { Card } from './components/Card';
 import { Header } from './components/Header';
 import { Drawer } from './components/Drawer.js';
 import { useState, useEffect } from 'react';
+import { Route } from 'react-router-dom';
+
 import axios from 'axios';
 function App() {
 	const [items, setItems] = useState([]); // товары
 	const [cartItems, setCardItems] = useState([]); //карзина
+	// const [favorites, setFavorites] = useState([]); //избранное
 	const [searchValue, setSearchValue] = useState(''); //карзина
 
 	const [cartOpened, setCartOpened] = useState(false); //открытие карзины
@@ -27,6 +30,11 @@ function App() {
 		axios.delete(`https://65af822e2f26c3f2139af727.mockapi.io/cart/${id}`);
 		setCardItems((prev) => prev.filter((item) => item.id !== id));
 	};
+	// const onAddToFavorite = (obj) => {
+	// 	axios.post('https://65af822e2f26c3f2139af727.mockapi.io/favorites', obj);
+	// 	setFavorites((prev) => [...prev, obj]);
+	// };
+
 	const onChangeSearchInput = (event) => {
 		setSearchValue(event.target.value);
 	};
@@ -74,5 +82,7 @@ function App() {
 	);
 }
 export default App;
+
+
 
 
